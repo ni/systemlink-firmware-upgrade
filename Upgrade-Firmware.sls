@@ -1,6 +1,6 @@
 Deploy_firmware_file:
   file.managed:
-    - source: salt://FirmwareUpgrade/9056/cRIO-9056_8.0.0.cfg
+    - source: salt://FirmwareUpgrade/9068/cRIO-9068_8.0.0.cfg
     - name: /safemode/safemode.cfg
     - makedirs: True
     - replace: True
@@ -9,6 +9,11 @@ Deploy_firmware_file:
 Remove_salt_cache_volatile:
   file.absent:
     - name: /var/volatile/cache/salt/minion/files/base/
+
+Create_userfs_folder:
+  file.directory:
+    - name: /mnt/userfs
+    - makedirs: True
 
 Install_firmware:
   cmd.run:
